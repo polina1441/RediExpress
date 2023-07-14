@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.polich.rediexpress.R
 import com.polich.rediexpress.databinding.FragmentOnBoardingBinding
 
@@ -20,6 +21,12 @@ class OnBoardingFragment : Fragment(R.layout.fragment_on_boarding) {
         binding = FragmentOnBoardingBinding.bind(view)
         binding.viewPageOnboarding.adapter = OnBoardingAdapter(onBoardings)
             { showLastButton(it) }
+        binding.viewPageOnboarding.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                showLastButton(position == onBoardings.lastIndex)
+            }
+        })
         binding.dots.attachTo(binding.viewPageOnboarding)
 
         binding.skipOnb.setOnClickListener {

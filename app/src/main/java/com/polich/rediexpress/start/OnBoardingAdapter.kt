@@ -30,10 +30,9 @@ class OnBoardingAdapter(private val onBoardings: Array<OnBoarding>, val showLast
             binding.imageView.setImageResource(onBoarding.img)
             binding.textBodyOnb.text = onBoarding.text
             binding.titleOnb.text = onBoarding.title
-
-            if (position == onBoardings.lastIndex) {
-                showLastButton(true)
-            } else showLastButton(false)
+//            if (position == onBoardings.lastIndex) {
+//                showLastButton(true)
+//            } else showLastButton(false)
         }
     }
 }
